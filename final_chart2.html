@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"stroke": "transparent"}, "background": "#f9f9f9", "title": {"fontSize": 20, "anchor": "start", "color": "#104e8b", "subtitleFontSize": 16}, "axis": {"labelFontSize": 12, "titleFontSize": 14, "titleColor": "#104e8b", "labelColor": "#555", "gridColor": "#ddd", "gridDash": [2, 2], "tickColor": "#bbb"}, "legend": {"labelFontSize": 12, "titleFontSize": 14, "labelColor": "#104e8b", "titleColor": "#444"}, "mark": {"color": "#104e8b", "tooltip": true}, "bar": {"fill": "#376b9e", "stroke": "#104e8b", "strokeWidth": 0.5}, "line": {"stroke": "#b22222", "strokeWidth": 2}, "point": {"filled": true, "fill": "#b22222", "stroke": "#d09090", "size": 50}, "area": {"fill": "#e5b5b5", "opacity": 0.5}}, "vconcat": [{"hconcat": [{"layer": [{"mark": {"type": "rect"}, "encoding": {"color": {"field": "Correlation", "scale": {"domain": [-1, 1], "range": ["#d89090", "#e5b5b5", "#ffffff", "#afc3d8", "#104e8b"]}, "title": "Correlation", "type": "quantitative"}, "tooltip": [{"field": "Variable 1", "type": "nominal"}, {"field": "Variable 2", "type": "nominal"}, {"field": "Correlation", "format": ".2f", "type": "quantitative"}], "x": {"axis": {"labelAngle": 30}, "field": "Variable 1", "sort": null, "title": null, "type": "nominal"}, "y": {"field": "Variable 2", "sort": null, "title": null, "type": "nominal"}}, "transform": [{"filter": "(abs(datum.Correlation) >= param_136)"}]}, {"mark": {"type": "text", "baseline": "middle"}, "encoding": {"color": {"condition": {"test": "(abs(datum.Correlation) < param_136)", "value": "white"}, "value": "black"}, "text": {"field": "Correlation", "format": ".2f", "type": "quantitative"}, "x": {"field": "Variable 1", "type": "nominal"}, "y": {"field": "Variable 2", "type": "nominal"}}}], "height": 300, "width": 300}, {"mark": {"type": "bar"}, "encoding": {"color": {"condition": {"test": "datum.Correlation > 0", "value": "#104e8b"}, "value": "#d89090"}, "tooltip": [{"field": "Variable 1", "type": "nominal"}, {"field": "Variable 2", "type": "nominal"}, {"field": "Correlation", "format": ".2f", "type": "quantitative"}], "x": {"field": "Correlation", "scale": {"domain": [-1, 1]}, "type": "quantitative"}, "y": {"field": "Variable 2", "sort": "-x", "title": "", "type": "nominal"}}, "height": 300, "transform": [{"filter": "datum['Variable 1'] === focus && datum['Variable 1'] !== datum['Variable 2']"}], "width": 400}], "data": {"name": "data-fd6a17337245ee9f44b9051c3adca779"}, "resolve": {"scale": {"color": "independent"}}}, {"data": {"name": "data-5900336b64da9786b9142ec2e7790f46"}, "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 12}, "encoding": {"text": {"field": "text", "type": "nominal"}, "x": {"value": 0}, "y": {"axis": null, "field": "line", "type": "ordinal"}}, "height": 80, "width": 700}], "padding": {"top": 20, "bottom": 10, "left": 20, "right": 20}, "params": [{"name": "param_136", "bind": {"input": "range", "max": 1, "min": 0, "name": "Min |Correlation|: ", "step": 0.05}, "value": 0}, {"name": "focus", "bind": {"input": "select", "options": ["Full-Time Teachers", "Low-Income Students", "Pupil-Teacher Ratio", "Segregation Index"], "name": "Select Variable: "}, "value": "Segregation Index"}], "title": {"text": "Correlation of Segregation and Educational Equity Indicators (2015-16)", "subtitle": "Use slider to filter weak correlations | Select a variable to see how it correlates with others"}, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-fd6a17337245ee9f44b9051c3adca779": [{"Variable 1": "Segregation Index", "Variable 2": "Segregation Index", "Correlation": 1.0}, {"Variable 1": "Pupil-Teacher Ratio", "Variable 2": "Segregation Index", "Correlation": 0.037285652214970634}, {"Variable 1": "Low-Income Students", "Variable 2": "Segregation Index", "Correlation": 0.46875767460138806}, {"Variable 1": "Full-Time Teachers", "Variable 2": "Segregation Index", "Correlation": 0.1151802983010287}, {"Variable 1": "Segregation Index", "Variable 2": "Pupil-Teacher Ratio", "Correlation": 0.037285652214970634}, {"Variable 1": "Pupil-Teacher Ratio", "Variable 2": "Pupil-Teacher Ratio", "Correlation": 1.0}, {"Variable 1": "Low-Income Students", "Variable 2": "Pupil-Teacher Ratio", "Correlation": 0.04312322658592516}, {"Variable 1": "Full-Time Teachers", "Variable 2": "Pupil-Teacher Ratio", "Correlation": -0.027839025028412446}, {"Variable 1": "Segregation Index", "Variable 2": "Low-Income Students", "Correlation": 0.46875767460138806}, {"Variable 1": "Pupil-Teacher Ratio", "Variable 2": "Low-Income Students", "Correlation": 0.04312322658592516}, {"Variable 1": "Low-Income Students", "Variable 2": "Low-Income Students", "Correlation": 1.0}, {"Variable 1": "Full-Time Teachers", "Variable 2": "Low-Income Students", "Correlation": 0.6620180955231612}, {"Variable 1": "Segregation Index", "Variable 2": "Full-Time Teachers", "Correlation": 0.1151802983010287}, {"Variable 1": "Pupil-Teacher Ratio", "Variable 2": "Full-Time Teachers", "Correlation": -0.027839025028412446}, {"Variable 1": "Low-Income Students", "Variable 2": "Full-Time Teachers", "Correlation": 0.6620180955231612}, {"Variable 1": "Full-Time Teachers", "Variable 2": "Full-Time Teachers", "Correlation": 1.0}], "data-5900336b64da9786b9142ec2e7790f46": [{"text": "Explanation: This chart uses the Pearson correlation coefficient to show how strongly two variables are related. The value ranges from -1 to +1:", "line": 1}, {"text": "Posiive values indicate a positive linear relationship(both increase together),while negative values indicate a negative linear relationship(one increases while the other decreases).", "line": 2}, {"text": "0 means no linear relationship. The closer the value is to \u00b11, the stronger the relationship.", "line": 3}, {"text": "For example, here the correlation cofficient between Segregation Index and Low-Income Students is 0.47, indicating a moderate positive relationship.", "line": 4}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

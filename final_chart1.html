@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"stroke": "transparent"}, "background": "#f9f9f9", "title": {"fontSize": 20, "anchor": "start", "color": "#104e8b"}, "axis": {"labelFontSize": 12, "titleFontSize": 14, "titleColor": "#104e8b", "labelColor": "#555", "gridColor": "#ddd", "gridDash": [2, 2], "tickColor": "#bbb"}, "legend": {"labelFontSize": 12, "titleFontSize": 14, "labelColor": "#104e8b", "titleColor": "#444"}, "mark": {"color": "#104e8b", "tooltip": true}, "bar": {"fill": "#376b9e", "stroke": "#104e8b", "strokeWidth": 0.5}, "line": {"stroke": "#b22222", "strokeWidth": 2}, "point": {"filled": true, "fill": "#b22222", "stroke": "#d09090", "size": 50}, "area": {"fill": "#e5b5b5", "opacity": 0.5}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "School Type", "legend": {"title": "School Type"}, "scale": {"domain": ["Public", "Private"], "range": ["#104E8B", "#d89090"]}, "type": "nominal"}, "opacity": {"condition": {"param": "param_134", "value": 1}, "value": 0.25}, "tooltip": [{"field": "Race", "type": "nominal"}, {"field": "School Type", "type": "nominal"}, {"field": "Measure", "type": "nominal"}, {"field": "Value", "format": ",.0f", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0}, "field": "Race", "sort": ["White", "Black", "Hispanic", "Asian", "Multiracial", "Other"], "title": "Race", "type": "nominal"}, "xOffset": {"field": "School Type", "type": "nominal"}, "y": {"field": "Value", "title": null, "type": "quantitative"}}, "name": "view_24", "transform": [{"filter": "datum.Measure === MeasureSelector"}, {"filter": "(datum.Race === 'White') || (!BlackSelect && datum.Race === 'Black') || (!HispanicSelect && datum.Race === 'Hispanic') || (!AsianSelect && datum.Race === 'Asian') || (!MultiSelect && datum.Race === 'Multiracial') || (!OtherSelect && datum.Race === 'Other')"}]}, {"mark": {"type": "bar"}, "encoding": {"color": {"field": "School Type", "scale": {"domain": ["Public", "Private"], "range": ["#104E8B", "#d89090"]}, "type": "nominal"}, "opacity": {"condition": {"param": "param_134", "value": 1}, "value": 0.25}, "tooltip": [{"field": "Race", "type": "nominal"}, {"field": "School Type", "type": "nominal"}, {"field": "Measure", "type": "nominal"}, {"field": "Value", "format": ",.0f", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0}, "field": "Race", "sort": ["White", "Combined"], "title": "Race", "type": "nominal"}, "xOffset": {"field": "School Type", "type": "nominal"}, "y": {"field": "Value", "type": "quantitative"}}, "transform": [{"filter": "datum.Measure === MeasureSelector"}, {"filter": "(datum.Race !== 'White') && ( (BlackSelect && datum.Race === 'Black') || (HispanicSelect && datum.Race === 'Hispanic') || (AsianSelect && datum.Race === 'Asian') || (MultiSelect && datum.Race === 'Multiracial') || (OtherSelect && datum.Race === 'Other') )"}, {"aggregate": [{"op": "sum", "field": "Value", "as": "Value"}], "groupby": ["School Type", "Measure"]}, {"calculate": "\"Combined\"", "as": "Race"}]}], "data": {"name": "data-15c67bd09315f2c0fe7e1227da7da376"}, "height": 400, "padding": {"left": 80, "right": 20, "top": 20, "bottom": 20}, "params": [{"name": "MeasureSelector", "bind": {"input": "radio", "options": ["Percentage", "Count"], "name": "Show: "}, "value": "Percentage"}, {"name": "param_134", "select": {"type": "point", "fields": ["School Type"]}, "views": ["view_24"]}, {"name": "BlackSelect", "bind": {"input": "checkbox", "name": "Black"}, "value": false}, {"name": "HispanicSelect", "bind": {"input": "checkbox", "name": "Hispanic"}, "value": false}, {"name": "AsianSelect", "bind": {"input": "checkbox", "name": "Asian"}, "value": false}, {"name": "MultiSelect", "bind": {"input": "checkbox", "name": "Multiracial"}, "value": false}, {"name": "OtherSelect", "bind": {"input": "checkbox", "name": "Other"}, "value": false}], "resolve": {"scale": {"y": "shared"}}, "title": {"text": "Racial Distribution in NYC Public vs Private Schools (2015-16)", "subtitle": "Click to highlight | Toggle to switch Count vs Percentage | Use checkboxes to customize groupings", "subtitleFontSize": 16}, "width": 720, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-15c67bd09315f2c0fe7e1227da7da376": [{"School Type": "Public", "Race": "Black", "Value": 28.7472239942416, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "Black", "Value": 12.533154132521378, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "Hispanic", "Value": 39.31139706007771, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "Hispanic", "Value": 13.65771851992816, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "White", "Value": 15.358262518890484, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "White", "Value": 64.48493642732257, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "Asian", "Value": 14.37629845430635, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "Asian", "Value": 5.679912461196284, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "Multiracial", "Value": 1.257006109771199, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "Multiracial", "Value": 3.383802942540766, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "Other", "Value": 0.9498118627126566, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Private", "Race": "Other", "Value": 0.2604755164908358, "Measure": "Percentage", "Year": "2015-16"}, {"School Type": "Public", "Race": "Black", "Value": 337075.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "Black", "Value": 21075.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Public", "Race": "Hispanic", "Value": 460945.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "Hispanic", "Value": 22966.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Public", "Race": "White", "Value": 180083.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "White", "Value": 108434.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Public", "Race": "Asian", "Value": 168569.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "Asian", "Value": 9551.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Public", "Race": "Multiracial", "Value": 14739.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "Multiracial", "Value": 5690.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Public", "Race": "Other", "Value": 11137.0, "Measure": "Count", "Year": "2015-16"}, {"School Type": "Private", "Race": "Other", "Value": 438.0, "Measure": "Count", "Year": "2015-16"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
